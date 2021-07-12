@@ -1,0 +1,106 @@
+<%- include('partials/header') %>
+
+<% const length = result.length %>
+<% let totalPayable =0 %>
+<div class="container">
+    <div class="col text-center backf4f5f7">
+        <h3>CART</h3>
+    </div>
+    <div class="row ">
+        <div class="col-md-8">
+            <div style="min-height: 200px;" class="shadow-sm p-3 mb-5 bg-white rounded card">
+                <div class="card-body">
+                  <h5 class="card-title">Order's</h5>
+                  <hr>
+                  <%if(length==0){%>
+                      <div class="text-center">
+                        <h5 style="color: grey;">Your Cart is Empty!</h5>
+                      </div>
+                  <%}else{%>
+                    <ul class="list-group list-group-flush">
+
+                        <%for(let i=0;i<length;i++){%>
+    
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <div  class="d-flex">
+                                        <img style="width: 100px;" src="data:image/<%=result[i].img.contentType%>;base64,<%=result[i].img.data.toString('base64')%>">
+                                        <div style="margin-left: 10px;"> 
+                                            <h6><%=result[i].pName%></h6>
+                                            <h6>Price : <%=result[i].pPrice%></h6>
+                                        </div>
+                                    </div>
+                                    <form action="/cart/delete/<%=result[i]._id%>" method="POST">
+                                        <button type="submit" style="color: red;" class="btn"><i  class="material-icons">delete</i></button>
+    
+    
+                                    </form>
+                                 
+                                </div>
+                                  
+                            </li>
+                            <% totalPayable = totalPayable + result[i].pPrice %>
+    
+                        <%}%>
+    
+    
+    
+                        
+                       
+                       
+                        
+                      </ul>
+
+                  <%}%>
+                  
+                </div>
+              </div>
+    
+        </div>
+        <div class="col-md-4">
+            <div class="shadow-sm p-3 mb-5 bg-white rounded card">
+                <div class="card-body">
+                  <h5 class="card-title">Total</h5>
+                  <hr>
+                  <div class="d-flex justify-content-between">
+                    <p class="card-text">Total Bill : </p>
+                    <p class="card-text"><%= totalPayable %></p>
+                  </div>
+                  <form action="/checkout" method="POST">
+                    <button class="btn btn-primary">Check Out</button>
+                    <input id="checkOutBtn" type="hidden" name="totalPrice" value="<%=totalPayable%>">
+
+                  </form>
+                  
+
+                </div>
+              </div>
+    
+        </div>
+        
+        
+    
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+             <div class="shadow-sm p-3 mb-5 bg-white rounded card">
+                    <div class="card-body">
+                      <h5 class="card-title">Billing Detail's</h5>
+                      <hr>
+                      <p class="card-text"><strong>Name :</strong> User</p>
+                      <p class="card-text"><strong>Phone Number :</strong> 1234567890</p>
+                      <p class="card-text"><strong>Email :</strong>  123@domain.com</p>
+
+                      
+                    </div>
+                  </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+
+<%- include('partials/footer') %>

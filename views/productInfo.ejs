@@ -1,0 +1,61 @@
+<%- include('partials/header') %>
+
+
+<section style="background-color: #f4f5f7;">
+    <br>
+    
+    <div class="container backf4f5f7">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="shadow-sm p-3 mb-5 bg-white rounded card">
+                    <div class="card-body">
+                        <h4>Product Detail's</h4>
+                        <hr>
+                        <img style="max-width: 300px; margin-bottom: 20px;" src="data:image/<%=result.img.contentType%>;base64,<%=result.img.data.toString('base64')%>">
+                        <p class="card-text"><strong>Name :</strong> <%= result.pName %></p>
+                        <p class="card-text"><strong>Description :</strong>  <%= result.pDesc %></p>
+                        <p class="card-text"><strong>Purchase Year :</strong>  <%= result.pYear %></p>
+                        <p class="card-text"><strong>Address :</strong>  <%= result.city %>, <%= result.state %>, <%= result.zipCode %>  </p>
+                        <p class="card-text"><strong>Posted On :</strong>  <%= result.postedDate %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="shadow-sm p-3 mb-5 bg-white rounded card">
+                    <div class="card-body">
+                      <h5 class="card-title">Price</h5>
+                      <hr>
+                      <p class="card-text">Total Cost : <%=result.pPrice %></p>
+                      <form action="/cart/<%= result._id %>" method="POST">
+                        <button name="cartButton" value="addToCart" class="btn btn-primary btn-sm">Add To Cart</button>
+                      </form>
+                    </div>
+                  </div>
+    
+            </div>
+        </div>
+        <br>
+        
+        <div class="row">
+            <div class="col-md-8">
+                 <div class="shadow-sm p-3 mb-5 bg-white rounded card">
+                        <div class="card-body">
+                          <h5 class="card-title">Seller Detail's</h5>
+                          <hr>
+                          <p class="card-text"><strong>Name :</strong> <%= result.fname%></p>
+                          <p class="card-text"><strong>Phone Number :</strong>  <%= result.phoneNumber%></p>
+                          <p class="card-text"><strong>Email :</strong>  <%= result.email %></p>
+
+                          
+                        </div>
+                      </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    
+    <br>
+</section>
+<%- include('partials/footer') %>
