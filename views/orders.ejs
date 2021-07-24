@@ -1,0 +1,47 @@
+<%- include('partials/header') %>
+
+<% const length = result.length %>
+
+<div style="min-height: 200px;" class="shadow-sm mb-5 bg-white rounded card">
+    <div class="card-body">
+      <h5 class="card-title">Previous Orders</h5>
+      <hr>
+      <%if(length==0){%>
+          <div class="text-center">
+            <h5 style="color: grey;">You Don't Have Any Orders!</h5>
+          </div>
+      <%}else{%>
+        <ul class="list-group list-group-flush">
+
+            <%for(let i=0;i<length;i++){%>
+
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                        <div  class="d-flex">
+                            <img style="width: 100px;" src="https://businessfirstfamily.com/wp-content/uploads/2017/03/construction-equipment-used-online.jpg">
+                            <div style="margin-left: 10px;"> 
+                                <h6 ><%=result[i].pName%></h6>
+                               <p>Price : &#x20b9; <%=result[i].pPrice%></p>
+                                   
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <%}%>
+
+
+
+            
+           
+           
+            
+          </ul>
+
+      <%}%>
+      
+    </div>
+  </div>
+
+
+
+<%- include('partials/footer') %>
