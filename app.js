@@ -497,7 +497,7 @@ app.post('/adminportal/reject/:craneId',function(req,res){
 
 
 
-app.listen(3000,function(res,req){
+app.listen(process.env.PORT,function(res,req){
     console.log('server is running');
 
 })
