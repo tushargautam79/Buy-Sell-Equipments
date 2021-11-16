@@ -9,16 +9,16 @@
       <% result.forEach(function(image) { %>
 
         
-              <div class="col-md-4 col-sm-6 text-start">
+              <div  class="col-md-4 col-sm-6 text-start">
                 <div style="border:1.4px solid black;margin-bottom: 2vw" class="shadow-sm  mb-5 bg-white rounded card" >
-                    <img style="height: 25vw !important;width:80%" class="card-img-top" src="data:image/<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>" alt="Card image cap">
+                    <img style="height: 30vw !important;width:auto" class="card-img-top" src="data:image/<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>" alt="Card image cap">
                     <div style="padding:0.5vw!important;height: 16vw!important" class="card-body">
                         <h5  style="text-align: center!important;font-size: 1.5vw;font-weight: 600" class="card-title"><strong><%= image.pName %></strong> </h5>
                     
                       <p class="card-text"> <%= image.pDesc %>    </p>
                       <p style="text-align: center!important;font-size:1vw;font-weight: 300">Price : <%= image.pPrice %></p>
 
-                      <form action="product/<%= image._id %>" method="POST">
+                      <form action="product/<%= image._id %>" method="POST" style="margin-bottom: 2vw">
                         <button name="detailsButton" value="details" class="btn btn-primary btn-sm">View Details</button>
                         <button name="cartButton" value="addToCart" class="btn btn-primary btn-sm">Add To Cart</button>
                       </form>
